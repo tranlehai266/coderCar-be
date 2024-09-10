@@ -5,6 +5,10 @@ const Car = require("./Car")
 
 const createCar = async () => {
   try {
+    const mongoURI = "mongodb+srv://admin:123@cluster0.mrzrp.mongodb.net/"
+    mongoose.connect(mongoURI, () => {
+      console.log("Connected to Database!")
+    })
     let newData = await csv().fromFile("../data.csv");
     newData = newData.map((car) => ({
       make: car.Make,
